@@ -23,6 +23,7 @@
         background: #eee;
         font-size: 18px;
         transition: 0.2s;
+        color: #112D7A;
         
         /* сделайте элементы списка просматриваемыми */
         -webkit-user-select: none;
@@ -30,10 +31,17 @@
         -ms-user-select: none;
         user-select: none;
       }
+
+      ul .status {
+        font-size: 12px;
+        text-decoration-color: #5c36f4;
+        color: #3C61C7;
+        /* align-items: right; */
+      }
       
       /* Установите для всех нечетных элементов списка другой цвет (полосы зебры) */
       ul li:nth-child(odd) {
-        background: #f9f9f9;
+        background: #96B1FB;
       }
       
       /* Более темный фон-цвет при наведении курсора */
@@ -42,14 +50,14 @@
       }
       
       /* При нажатии на кнопку добавить цвет фона и вычеркнуть текст */
-      ul li.checked {
+      /* ul li.checked {
         background: #888;
         color: #fff;
         text-decoration: line-through;
-      }
+      } */
       
       /* Добавить отметку "проверено" при нажатии на нее */
-      ul li.checked::before {
+      /* ul li.checked::before {
         content: '';
         position: absolute;
         border-color: #fff;
@@ -60,7 +68,7 @@
         transform: rotate(45deg);
         height: 15px;
         width: 7px;
-      }
+      } */
       
       /* Стиль кнопки закрытия */
       .close {
@@ -77,7 +85,7 @@
       
       /* Стиль заголовка */
       .header {
-        background-color: #5c36f4;
+        background-color: #4B7AFA;
         padding: 30px 40px;
         color: white;
         text-align: center;

@@ -9,17 +9,40 @@
     <link rel="stylesheet" href="{% static "css.css" %}" />
 </head>
 <body>
-    <!-- <p>Задачи</p>
-    {{ Задачи }} -->
     <div id="myDIV" class="header">
         <h2>Планировщик задач</h2>
-        <input type="text" id="myInput" placeholder="Название...">
-        <span onclick="newElement()" class="addBtn">Добавить</span>
+        <form action="" method="post">
+          {% csrf_token %}
+        <input type="text" id="myInput" placeholder="Название">
+        <input type="text" id="description" placeholder="Описание">
+        <input type="text" id="status" placeholder="Статус">
+        <span onclick="newElement()" class="addBtn" type="submit">Добавить</span>
+      </form>
       </div>
       <ul id="myUL">
         {% for el in Задачи %}
         <li>
-          {{el.Имя}} | {{el.Описание}} | {{el.Состояние}}
+          <table>
+            <td>
+              {{el.Имя}}
+            </td>
+            <td>
+              <div class="status">{{el.Состояние}}</div>
+            </td>
+          </table>
+          <br>
+          <table>
+            <td>
+              {{el.Описание}}
+            </td>
+            <td>
+              <div class="status">{{el.Время}}</div>
+            </td>
+          </table>
+           <!-- {{el.Имя}}
+           <span>{{el.Состояние}}</span>
+           <br>
+           {{el.Описание}} -->
         </li>
         {% endfor %}
       </ul>
@@ -41,6 +64,7 @@
         var i;
         for (i = 0; i < close.length; i++) {
           close[i].onclick = function() {
+            console.log("Удалил одну запись");
             var div = this.parentElement;
             div.style.display = "none";
           }
