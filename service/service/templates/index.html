@@ -24,9 +24,8 @@
               <br>
               <div class="form-floating">
                 <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="status">
-                  <option selected>Выбор статуса</option>
+                  <option selected>Добавлена</option>
                   <option>В Работе</option>
-                    <option>Добавлена</option>
                     <option>Выполнена</option>
                 </select>
                 <label for="floatingSelect">Статус задачи</label>
@@ -45,7 +44,7 @@
         {% elif el.Состояние == "Добавлена"%}
         <li class="list-group-item list-group-item-action flex-column align-items-start">
         {% elif el.Состояние == "Выполнена"%}
-        <li class="list-group-item list-group-item-action flex-column align-items-start disabled">
+        <li class="list-group-item list-group-item-action flex-column align-items-start">
         {% else %}
         <li class="list-group-item list-group-item-action flex-column align-items-start">
         {% endif %}
@@ -65,8 +64,8 @@
           <a href="{% url 'change' el.id "В Работе" %}" class="btn btn-info">В Работе</a>
           <a href="{% url 'change' el.id "Выполнена" %}" class="btn btn-danger">Выполнена</a>
         {% elif el.Состояние == "Выполнена"%}
-        <button type="button" class="btn-close" aria-label="Close" onclick="Delete_Task({{el.id}})"></button>
-          <!-- Может выводить ошибку в функции, но так надо. Сделать кликабельной -->
+        <a href="{% url 'change' el.id "Удалить" %}" class="btn-close" aria-label="Close"></a>
+          <!-- Может выводить ошибку в функции, но так надо -->
         {% endif %}
         </div>
       </li>

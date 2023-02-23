@@ -7,11 +7,11 @@ class Person(models.Model):
 class Task(models.Model):
     # Типы статусов:
     ADD = "Добавлена"
-    Worked = "В работе"
+    WORKED = "В Работе"
     END = "Выполнена"
     CHOISE_STATUS = [
         (ADD, "Добавлена"),
-        (Worked, "В работе"),
+        (WORKED, "В Работе"),
         (END, "Выполнена")
     ]
     title = models.CharField('Название задачи', max_length=100)
