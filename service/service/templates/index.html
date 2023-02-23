@@ -25,7 +25,7 @@
               <div class="form-floating">
                 <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="status">
                   <option selected>Выбор статуса</option>
-                  <option>В работе</option>
+                  <option>В Работе</option>
                     <option>Добавлена</option>
                     <option>Выполнена</option>
                 </select>
@@ -38,16 +38,16 @@
     </form>
     <hr>
     <br>
-      <div class="list-group">
+    <ul class="list-group list-group-flush">
         {% for el in Задачи %}
-        {% if el.Состояние == "В работе" %}
-        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
+        {% if el.Состояние == "В Работе" %}
+        <li class="list-group-item list-group-item-action flex-column align-items-start active">
         {% elif el.Состояние == "Добавлена"%}
-        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start"></a>
+        <li class="list-group-item list-group-item-action flex-column align-items-start">
         {% elif el.Состояние == "Выполнена"%}
-        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start disabled">
+        <li class="list-group-item list-group-item-action flex-column align-items-start disabled">
         {% else %}
-        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+        <li class="list-group-item list-group-item-action flex-column align-items-start">
         {% endif %}
         <div class="d-flex w-100 justify-content-between">
         <h5 class="mb-1">{{el.Имя}}</h5>
@@ -55,8 +55,27 @@
         <small>{{el.Время}}</small>
         </div>
         <p class="mb-1">{{el.Описание}}</p>
-        </a>
+        <div class="btn-group">
+          {% if el.Состояние == "В Работе" %}
+          <a href="{% url 'change' el.id "Добавлена" %}" class="btn btn-info">Добавлена</a>
+          <!-- <a href="#" class="btn btn-info disabled">В работе</a> -->
+          <a href="{% url 'change' el.id "Выполнена" %}" class="btn btn-danger">Выполнена</a>
+        {% elif el.Состояние == "Добавлена"%}
+        <!-- <a href="#" class="btn btn-info disabled">Добавлена</a> -->
+          <a href="{% url 'change' el.id "В Работе" %}" class="btn btn-info">В Работе</a>
+          <a href="{% url 'change' el.id "Выполнена" %}" class="btn btn-danger">Выполнена</a>
+        {% elif el.Состояние == "Выполнена"%}
+        <button type="button" class="btn-close" aria-label="Close" onclick="Delete_Task({{el.id}})"></button>
+          <!-- Может выводить ошибку в функции, но так надо. Сделать кликабельной -->
+        {% endif %}
+        </div>
+      </li>
         {% endfor %}
-      </div>
+      </ul>
+      <script>
+        function Delete_Task(id) {
+          console.log("Удалена запись "+id );          
+        }
+      </script>
 </body>
 </html>
