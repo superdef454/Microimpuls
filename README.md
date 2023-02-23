@@ -9,14 +9,31 @@
 
 ***Изображение планировщика задач:***
 
-![image](https://user-images.githubusercontent.com/92267924/220852493-2a0cdf22-83c5-4dfc-966b-902244931acc.png)
+![image](https://user-images.githubusercontent.com/92267924/220975251-306d353b-80e2-46c6-8e78-174124bc522d.png)
+
+***Изображение админ-панели с возможностью редактирования задач***
+
+![image](https://user-images.githubusercontent.com/92267924/220975507-7a734153-3cd2-4f26-a263-4732754c8ae5.png)
+
 
 python 3.10.6
 все зависимости находяться в файле req.txt
 
 Установка:
 
-*Ближе к вечеру упакую в докерфайл и настрою запуск из него (времени мало)
+***Docker***
+
+-Установить на машину Docker
+
+-Открыть в терминале папку service
+
+-Прописать команду: docker compose -f "docker-compose.yml" up -d --build
+
+*Результат:*
+
+![image](https://user-images.githubusercontent.com/92267924/220975690-39c14920-c31c-4966-af14-a9a76e7d5955.png)
+
+***Без Docker***
 
 -Установить python
 
@@ -24,7 +41,7 @@ python 3.10.6
 
 -Установить зависимости с помощью команды: pip install -r req.txt
 
--Перейти в папку Service (cd service)
+-Перейти в папку Service
 
 -Запустить тестовый сервер: python manage.py runserver
 
